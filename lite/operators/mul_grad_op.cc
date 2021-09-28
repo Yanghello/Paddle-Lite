@@ -57,6 +57,7 @@ bool MulGradOpLite::InferShapeImpl() const {
     param_.y_grad->Resize(y_dims);
     param_.y_grad->set_lod(param_.y->lod());
   }
+  return true;
 }
 
 bool MulGradOpLite::AttachImpl(const cpp::OpDesc &op_desc, lite::Scope *scope) {

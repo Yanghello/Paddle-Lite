@@ -144,6 +144,7 @@ if (NOT HAS_ARM_MATH_LIB_DIR)
       pixel_shuffle.cc
       scatter.cc
       quantize.cc
+      lstm_grad.cc
       DEPS ${lite_kernel_deps} context tensor)
       if (LITE_WITH_ARM82_FP16)
         if(${ANDROID_NDK_MAJOR})

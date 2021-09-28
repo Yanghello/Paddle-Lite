@@ -121,6 +121,7 @@ if(LITE_BUILD_EXTRA)
         lite_cc_test(test_kernel_mul_grad_compute SRCS mul_grad_compute_test.cc DEPS ${test_kernel_deps})
         lite_cc_test(test_kernel_sgd_compute SRCS sgd_compute_test.cc DEPS ${test_kernel_deps})
         lite_cc_test(test_kernel_sequence_pool_grad_compute SRCS sequence_pool_grad_compute_test.cc DEPS ${test_kernel_deps})
+        lite_cc_test(test_kernel_lstm_grad_compute SRCS lstm_grad_compute_test.cc DEPS ${test_kernel_deps})
     endif()
 
 endif()
