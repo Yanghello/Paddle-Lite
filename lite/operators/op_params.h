@@ -1868,6 +1868,35 @@ struct LstmParam : ParamBase {
   WITH_INT8_CONFIG
 };
 
+struct LstmGradParam : ParamBase {
+  lite::Tensor* Input{};
+  lite::Tensor* Weight{};
+  lite::Tensor* Bias{};
+  lite::Tensor* Hidden{};
+  lite::Tensor* Cell{};
+  lite::Tensor* BatchGate{};
+  lite::Tensor* BatchCellPreAct{};
+  lite::Tensor* H0{nullptr};
+  lite::Tensor* C0{nullptr};
+  bool use_peepholes;
+  bool is_reverse;
+  lite_api::ActivationType gate_activation;
+  lite_api::ActivationType cell_activation;
+  lite_api::ActivationType candidate_activation;
+  // for int8
+  WITH_INT8_CONFIG
+  // for backward
+  lite::Tensor* Input_Grad{};
+  lite::Tensor* Weight_Grad{};
+  lite::Tensor* Bias_Grad{};
+  lite::Tensor* Hidden_Grad{};
+  //lite::Tensor* Cell_Grad{};
+  //lite::Tensor* BatchGate{};
+  //lite::Tensor* BatchCellPreAct{};
+  lite::Tensor* H0_Grad{nullptr};
+  lite::Tensor* C0_Grad{nullptr};
+};
+
 struct CrfDecodingParam : ParamBase {
   lite::Tensor* emission{};
   lite::Tensor* transition{};
