@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "lite/operators/lstm_op.h"
+#include "lite/operators/lstm_grad_op.h"
 #include "lite/core/op_registry.h"
 
 namespace paddle {
 namespace lite {
 namespace operators {
-/*inline lite_api::ActivationType GetActivationType(const std::string &type) {
+inline lite_api::ActivationType GetActivationType(const std::string &type) {
   if (type == "sigmoid") {
     return lite_api::ActivationType::kSigmoid;
   } else if (type == "sigmoid_v2") {
@@ -35,6 +35,7 @@ namespace operators {
   LOG(FATAL) << "The input type is not supported: " << type;
   return lite_api::ActivationType::kIndentity;
 }
+/*
 bool LstmGradOp::CheckShape() const {
   CHECK_OR_FALSE(param_.Input);
   CHECK_OR_FALSE(param_.Weight);
