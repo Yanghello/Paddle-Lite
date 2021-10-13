@@ -35,55 +35,8 @@ inline lite_api::ActivationType GetActivationType(const std::string &type) {
   LOG(FATAL) << "The input type is not supported: " << type;
   return lite_api::ActivationType::kIndentity;
 }
-/*
-bool LstmGradOp::CheckShape() const {
-  CHECK_OR_FALSE(param_.Input);
-  CHECK_OR_FALSE(param_.Weight);
-  CHECK_OR_FALSE(param_.Bias);
-
-  CHECK_OR_FALSE(param_.Input_Grad);
-  CHECK_OR_FALSE(param_.Weight_Grad);
-  CHECK_OR_FALSE(param_.Bias_Grad);
-  CHECK_OR_FALSE(param_.Hidden_Grad);
-  return true;
-}*/
 
 bool LstmGradOp::InferShapeImpl() const {
-  /*auto in_dims = param_.Input->dims();
-  if (param_.H0) {
-    CHECK(param_.C0) << "lstm must has H0 and C0 in the same time";
-    auto h_dims = param_.H0->dims();
-    auto c_dims = param_.C0->dims();
-    CHECK_EQ(h_dims, c_dims) << "H0 and C0 dims must be same";
-  }
-  int frame_size = in_dims[1] / 4;
-  auto w_dims = param_.Weight->dims();
-  CHECK_EQ(w_dims.size(), 2) << "weight dims should be 2";
-  CHECK_EQ(w_dims[0], frame_size) << "weight first dims should be "
-                                  << frame_size;
-  CHECK_EQ(w_dims[1], 4 * frame_size) << "weight dims should be 4 * "
-                                      << frame_size;
-  auto b_dims = param_.Bias->dims();
-  CHECK_EQ(b_dims.size(), 2) << "Bias dims should be 2";
-  CHECK_EQ(b_dims[0], 1) << "Bias first dims should be 1";
-  if (param_.use_peepholes) {
-    CHECK_EQ(b_dims[1], 7 * frame_size) << "Bias second dim must be 7 * "
-                                        << frame_size;
-  } else {
-    CHECK_EQ(b_dims[1], 4 * frame_size) << "Bias second dim must be 4 * "
-                                        << frame_size;
-  }
-  DDimLite out_dims(std::vector<int64_t>{in_dims[0], frame_size});
-  param_.Hidden->Resize(out_dims);
-  param_.Cell->Resize(out_dims);
-  param_.BatchCellPreAct->Resize(out_dims);
-  param_.BatchGate->Resize(in_dims);
-
-  auto hidden_lod = param_.Hidden->mutable_lod();
-  *hidden_lod = param_.Input->lod();
-  auto cell_lod = param_.Cell->mutable_lod();
-  *cell_lod = param_.Input->lod();
-*/
   param_.Input_Grad->Resize(param_.Input->dims());
   param_.Weight_Grad->Resize(param_.Weight->dims());
   param_.Bias_Grad->Resize(param_.Bias->dims());

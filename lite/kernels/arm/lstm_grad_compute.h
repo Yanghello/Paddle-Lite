@@ -67,12 +67,12 @@ struct TensorMatMul {
                                M,
                                N,
                                K,
-                               1,
+                               alpha,
                                mat_a.data<float>(),
                                K,
                                mat_b.data<float>(),
                                N,
-                               1,
+                               beta,
                                mat_out->mutable_data<float>(),
                                N,
                                nullptr,
@@ -82,6 +82,7 @@ struct TensorMatMul {
     }
     ARMContext* _ctx;
 };
+
 
 template <typename T>
 class ColwiseSum {

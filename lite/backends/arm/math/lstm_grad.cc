@@ -30,7 +30,7 @@ void LstmUnitGradFunctor<T>::compute(
                     const detail::ActivationType& cell_act,
                     const detail::ActivationType& cand_act) {
   for (int b = 0; b < batch_size; b++) {
-    detail::cpu_lstm_backward(detail::backward::lstm<T>(),
+    detail::cpu_lstm_backward(arm::math::detail::backward::lstm<T>(),
                               value,
                               grad,
                               frame_size,
@@ -58,7 +58,6 @@ void LstmUnitGradFunctor<T>::compute(
 }
 
 template class LstmUnitGradFunctor<float>;
-//template class LstmUnitGradFunctor<double>;
 
 }  // namespace math
 }  // namespace arm

@@ -167,7 +167,6 @@ void cpu_lstm_backward(Op op,
                                         active_node,
                                         active_gate,
                                         active_state);
-  //}
 }
 
 namespace backward {
