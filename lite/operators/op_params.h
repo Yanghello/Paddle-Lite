@@ -1126,6 +1126,17 @@ struct LookupTableParam : ParamBase {
   std::string entry{"none"};
 };
 
+struct LookupTableGradParam : ParamBase {
+  const lite::Tensor* W{nullptr};
+  const lite::Tensor* Ids{nullptr};
+  const lite::Tensor* Out_Grad{nullptr};
+  lite::Tensor* W_Grad{nullptr};
+  int64_t padding_idx{-1};
+  bool is_test{false};
+  std::string entry_config{""};  // used in distributed training
+  std::string entry{"none"};
+};
+
 struct LookupTableDequantParam : ParamBase {
   lite::Tensor* W{nullptr};
   lite::Tensor* Ids{nullptr};
