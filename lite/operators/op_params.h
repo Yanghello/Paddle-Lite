@@ -1011,6 +1011,16 @@ struct MatrixNmsParam : ParamBase {
   float gaussian_sigma{2.0f};
 };
 
+/// ----------------------- accuracy operators ----------------------
+struct AccuracyParam : ParamBase {
+  const lite::Tensor* Out{};
+  const lite::Tensor* Indices{};
+  const lite::Tensor* Label{};
+  lite::Tensor* Accuracy{};
+  lite::Tensor* Correct{};
+  lite::Tensor* Total{};
+};
+
 /// ----------------------- priorbox operators ----------------------
 struct PriorBoxParam : ParamBase {
   lite::Tensor* input{};
